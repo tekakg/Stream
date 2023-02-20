@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,11 +10,8 @@ public class Main {
         list1.add(1);
         list1.add(2);
         list1.add(3);
-        List<Integer>nlist=new ArrayList<>();
-        System.out.println(list1);
-        for(Integer val:list1){
-            if(val%2==1){nlist.add(val);}
-        }
-        System.out.println(nlist);
+        Stream<Integer> stream=list1.stream();
+        List<Integer>evenList=stream.filter(i->i%2==0).collect(Collectors.toList());
+        System.out.println(evenList );
     }
 }
