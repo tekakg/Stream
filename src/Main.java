@@ -1,23 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
 
-        //creating empty object.
-        Stream stream=Stream.empty();
+        //methods of stream
+        //filer(predicate ->boolean value function)
+        // In predicate we use lambda expression.
 
-        //array, object and collection.
-        String[] arr={"abc","def","ghi"};
-        List<Integer>list=new ArrayList<>();
-        list.add(1);list.add(2);list.add(3);
-        Stream stream1=Stream.of(list);
-        stream1.forEach(i->{System.out.println(i);});
+        //map(function -> it returns the value)
+        /* each element operation*/
 
-        // using builder function.
-        Stream stream2=Stream.builder().build();
+        List<String> listString = List.of("Aman", "Ankit", "Durgesh");
+        // now to filer out all those elements started with A.
+        List<String> ans = listString.stream().filter(e -> e.startsWith("A")).collect(Collectors.toList());
+        System.out.println(ans);
 
+        // now to square out every element.
+        List<Integer> listNumber = List.of(4, 5, 3, 2, 1);
+        List<Integer> squareNumber = listNumber.stream().map(i -> i * i).collect(Collectors.toList());
+        System.out.println(listNumber.stream().min((x, y) -> x.compareTo(y)).get());
     }
 }
